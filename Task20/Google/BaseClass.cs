@@ -1,12 +1,11 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 
 namespace Google;
 
 internal class BaseClass
 {
-    internal const string USERNAME = "jcecelia72@gmail.com";
-    internal const string PASSWORD = "KadIrKas_Bebutu63!";
+    protected const string USERNAME = "jcecelia72@gmail.com";
+    protected const string PASSWORD = "KadIrKas_Bebutu63!";
 
     internal IWebDriver _driver;
     public BaseClass(IWebDriver driver)
