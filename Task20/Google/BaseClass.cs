@@ -2,7 +2,7 @@
 
 namespace Google;
 
-internal class BaseClass
+internal abstract class BaseClass
 {
     protected const string USERNAME = "jcecelia72@gmail.com";
     protected const string PASSWORD = "KadIrKas_Bebutu63!";
