@@ -15,19 +15,8 @@ internal abstract class BaseClass
 
     internal IWebElement GetElementByXPath(string path)
     {
-        IWebElement? webElement = null;
+        IWebElement webElement = _driver.FindElement(By.XPath(path));
 
-        while (webElement == null)
-        {
-            try
-            {
-                webElement = _driver.FindElement(By.XPath(path));
-            }
-            catch (Exception)
-            {
-                Thread.Sleep(1000);
-            }
-        }
         return webElement;
     }
 
