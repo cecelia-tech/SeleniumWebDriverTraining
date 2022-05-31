@@ -9,7 +9,7 @@ b) Find button
 button[type='submit']
 
 
-Email page (switch from full to light version, see screenshot a):
+Email page:
 
 c) Write email button
 //a[contains(@href, 'compose')]
@@ -40,7 +40,7 @@ input#id1163503860925
 
 i) Topic input
 //input[@id='id1163503860909']
-input#iid1163503860909
+input#id1163503860909
 
 j) Find button
 //input[@name='search']
@@ -64,10 +64,11 @@ n) Update locator (just add any code after it, but initial part must be presente
 “button[name='nosend']” | “//button[@name='nosend']” to grab all 3 elements: Send, Save and Cancel inputs
 
 //button[@name='nosend']/parent::div/following-sibling::input
-button[name='nosend'] => we can't select parent nodes in CSS, thus I can't access it's siblings
+button[name='nosend'] => it is unavailable to select parent nodes in CSS, thus it doesn't seem possible to access it's siblings
 
 o) Xpath only. Update locator (just add any code after it, but initial part must be presented as beginning of locator) 
 “//input[contains(@class, 'b-compose__cancel')]” to grab all 2 elements: Send and Save inputs
+
 //input[contains(@class, 'b-compose__cancel')]/preceding-sibling::input[contains(@class, 'b-form-button')]
 
 p) Update locator (just add any code after it, but initial part must be presented as beginning of locator) 
