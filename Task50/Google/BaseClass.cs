@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Google;
 
 internal abstract class BaseClass
 {
-
-    private IWebDriver _driver;
+    protected IWebDriver _driver;
     public BaseClass(IWebDriver driver)
     {
         _driver = driver;
+        _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
     }
 
     internal IWebElement GetElementByXPath(string path)
