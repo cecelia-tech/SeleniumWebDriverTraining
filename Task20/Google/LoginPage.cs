@@ -6,7 +6,7 @@ internal class LoginPage : BaseClass
 {
     const string EMAIL_INPUT_LOCATOR = "identifierId";
     const string EMAIL_NEXT_BUTTON_LOCATOR = "//div[@id='identifierNext']//button";
-    const string PASSWORD_INPUT_LOCATOR = "//div[@id='password']//input";
+    const string PASSWORD_INPUT_LOCATOR = "//input[@name='password']";
     const string PASSWORD_NEXT_BUTTON_LOCATOR = "//div[@id='passwordNext']//button";
 
 

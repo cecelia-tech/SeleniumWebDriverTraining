@@ -27,7 +27,7 @@ public class Tests
 
         FrontPageAfterLogIn frontPageAfterLogIn = new FrontPageAfterLogIn(_driver);
 
-        Assert.IsTrue(frontPageAfterLogIn.CheckAccountImage());
+        Assert.IsTrue(frontPageAfterLogIn.CheckAccountImage(), "Account Image is not displayed");
     }
 
     [TearDown]
