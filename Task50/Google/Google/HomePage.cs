@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace Google;
+namespace Task50Pages;
 
 internal class HomePage : BaseClass
 {

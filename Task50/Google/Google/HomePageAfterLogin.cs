@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
-namespace Google;
+namespace Task50Pages;
 
 internal class HomePageAfterLogin : BaseClass
 {

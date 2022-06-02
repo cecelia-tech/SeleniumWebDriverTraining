@@ -10,6 +10,10 @@ public class MultiSelectTest : TestBaseClass
     {
         _driver.Url = URL;
 
+        int expectedResult = 3;
 
+        DropdownDemoPage dropdownDemoPage = new DropdownDemoPage(_driver);
+
+        Assert.AreEqual(expectedResult, dropdownDemoPage.SelectMultipleOptions(), $"{dropdownDemoPage.SelectMultipleOptions()} options selected instead of {expectedResult}");
     }
 }

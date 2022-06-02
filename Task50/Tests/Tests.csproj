@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Google\Google.csproj" />
+    <ProjectReference Include="..\Google\Task50Pages.csproj" />
   </ItemGroup>
 
 </Project>
