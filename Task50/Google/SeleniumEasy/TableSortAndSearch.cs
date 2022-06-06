@@ -13,9 +13,11 @@ internal class TableSortAndSearch : BaseClass
     const string TABLE_ROW_POSITION_LOCATOR = "/td[2]";
     const string TABLE_ROW_OFFICE_LOCATOR = "/td[3]";
     //const string TABLE_ROW_AGE_LOCATOR = "#example tbody > tr > td:nth-child(4)";
-    const string TABLE_ROW_AGE_LOCATOR = "/td[4]";
+    const string TABLE_ROW_AGE_LOCATOR = "//td[4]";
     const string TABLE_ROW_SALARY_LOCATOR = "/td[6]";
-    
+    const string TABLE_LOCATOR = "example";
+
+
     public TableSortAndSearch(IWebDriver driver) : base(driver)
     {
         _driver.Url = URL;
@@ -25,8 +27,22 @@ internal class TableSortAndSearch : BaseClass
     {
         try
         {
-            //SelectElement element = new SelectElement(GetElementByCSS(SELECT_DROPDOWN_LOCATOR));
-            //element.SelectByValue("10");
+            SelectElement element = new SelectElement(GetElementByCSS(SELECT_DROPDOWN_LOCATOR));
+            element.SelectByValue("10");
+
+            var table = GetElementById(TABLE_LOCATOR);
+            List<IWebElement> lstTrElem = new List<IWebElement>(table.FindElements(By.CssSelector("tbody > tr")));
+
+            foreach (var row in lstTrElem)
+            {
+                List<IWebElement> lstTdElem = new List<IWebElement>(row.FindElements(By.TagName("td")));
+
+                foreach (var item in lstTdElem)
+                {
+                    var s = item.Text;
+                }
+
+            }
 
             //List<IWebElement> allRows = _driver.FindElements(By.XPath(TABLE_ROW_LOCATOR)).ToList();
             List<Person> selectedPeople = new List<Person>();
@@ -38,6 +54,7 @@ internal class TableSortAndSearch : BaseClass
                 for (int i = 1; i <= 10; i++)
                 {
                     var row = GetElementByXPath($"//tbody/tr[{i}]");
+                    var rowElements =row.FindElement(By.XPath(TABLE_ROW_AGE_LOCATOR)); 
                 }
                 /*foreach (var row in allRows.ToList())
                 {

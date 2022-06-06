@@ -1,5 +1,6 @@
 ﻿namespace Tests;
 
+[TestFixture]
 internal class TestTableSortAndSearch : TestBaseClass
 {
     [Test]
