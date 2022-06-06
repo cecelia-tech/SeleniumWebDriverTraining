@@ -16,5 +16,6 @@ public class TestBaseClass
     public void CleanUp()
     {
         _driver.Quit();
+        _driver.Dispose();
     }
 }
