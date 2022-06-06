@@ -24,4 +24,10 @@ internal abstract class BaseClass
 
         return webElement;
     }
+    internal IWebElement GetElementByCSS(string cssSelector)
+    {
+        IWebElement webElement = _driver.FindElement(By.CssSelector(cssSelector));
+
+        return webElement;
+    }
 }
