@@ -10,7 +10,7 @@ internal class HomePageAfterLogin : BaseClass
     public HomePageAfterLogin(IWebDriver driver) : base(driver)
     {
         var waiter = new WebDriverWait(driver, TimeSpan.FromSeconds(5)); 
-        waiter.PollingInterval = TimeSpan.FromMilliseconds(500);
+        waiter.PollingInterval = TimeSpan.FromMilliseconds(250);
         waiter.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(By.XPath(ACCOUNT_IMAGE_LOCATOR)));
     }
 
