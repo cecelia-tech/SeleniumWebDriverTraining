@@ -27,11 +27,11 @@ internal class DropdownDemoPage : BaseClass
 
         IList<IWebElement> options = new List<IWebElement>();
 
-        foreach (var item in multiSelect.Options)
+        foreach (var option in multiSelect.Options)
         {
-            if (item.Selected)
+            if (option.Selected)
             {
-                options.Add(item);
+                options.Add(option);
             }
         }
 

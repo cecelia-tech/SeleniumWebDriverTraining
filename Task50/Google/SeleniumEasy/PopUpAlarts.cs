@@ -91,14 +91,14 @@ internal class PopUpAlarts : BaseClass
 
             WebDriverWait waiter = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
 
-            Func<IWebDriver, string> waitForElement = new Func<IWebDriver, string>((IWebDriver Web) =>
+            Func<IWebDriver, string> waitForElementText = new Func<IWebDriver, string>((IWebDriver Web) =>
             {
                 IWebElement element = GetElementById(PROMPT_BOX_VALUE_LOCATOR);
 
                 return element.Text;
             });
 
-            return waiter.Until(waitForElement);
+            return waiter.Until(waitForElementText);
         }
         catch (NoSuchElementException)
         {
