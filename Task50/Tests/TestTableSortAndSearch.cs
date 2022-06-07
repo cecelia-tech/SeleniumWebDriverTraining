@@ -8,6 +8,6 @@ internal class TestTableSortAndSearch : TestBaseClass
     {
         TableSortAndSearch tableSortAndSearch = new TableSortAndSearch(_driver);
 
-        Assert.IsNotNull(tableSortAndSearch.SelectData(60, 170000));
+        Assert.IsNotNull(tableSortAndSearch.SelectData(60, 200000));
     }
 }

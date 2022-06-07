@@ -25,37 +25,55 @@ internal class TableSortAndSearch : BaseClass
 
     public List<Person>? SelectData(int age, int salary)
     {
+        List<Person> selectedPeople = new List<Person>();
+
         try
         {
             SelectElement element = new SelectElement(GetElementByCSS(SELECT_DROPDOWN_LOCATOR));
             element.SelectByValue("10");
 
-            var table = GetElementById(TABLE_LOCATOR);
-            List<IWebElement> lstTrElem = new List<IWebElement>(table.FindElements(By.CssSelector("tbody > tr")));
+            //var nextButton = GetElementById(NEXT_BUTTON_LOCATOR);
 
-            foreach (var row in lstTrElem)
-            {
-                List<IWebElement> lstTdElem = new List<IWebElement>(row.FindElements(By.TagName("td")));
-
-                foreach (var item in lstTdElem)
-                {
-                    var s = item.Text;
-                }
-
-            }
-
-            //List<IWebElement> allRows = _driver.FindElements(By.XPath(TABLE_ROW_LOCATOR)).ToList();
-            List<Person> selectedPeople = new List<Person>();
-            //i for det 10 ir im kiekviena row is naujo su td[number till 10]
             while (GetElementById(NEXT_BUTTON_LOCATOR).Enabled)
             {
+                var table = GetElementById(TABLE_LOCATOR);
+
+                List<IWebElement> rows = new List<IWebElement>(table.FindElements(By.CssSelector("tbody > tr")));
+
+                foreach (var row in rows)
+                {
+                    List<IWebElement> rowElements = new List<IWebElement>(row.FindElements(By.TagName("td")));
+                    var s = int.Parse(rowElements[3].Text);
+                    var t = rowElements[5].GetAttribute("data-order");
+                    if (int.Parse(rowElements[3].Text) > age &&
+                        int.Parse(rowElements[5].GetAttribute("data-order")) <= salary)
+                    {
+                        selectedPeople.Add(new Person(rowElements[0].GetAttribute("data-search"), rowElements[1].Text, rowElements[2].Text));
+                    }
+                }
+
+                if (GetElementById(NEXT_BUTTON_LOCATOR).GetAttribute("class").Contains("disabled"))
+                {
+                    break;
+                }
+                GetElementById(NEXT_BUTTON_LOCATOR).Click();
+            }
+
+            var w = "fjd";
+            
+
+            //List<IWebElement> allRows = _driver.FindElements(By.XPath(TABLE_ROW_LOCATOR)).ToList();
+            //List<Person> selectedPeople = new List<Person>();
+            //i for det 10 ir im kiekviena row is naujo su td[number till 10]
+            //while (GetElementById(NEXT_BUTTON_LOCATOR).Enabled)
+            //{
                 //var allRows = _driver.FindElements(By.XPath(TABLE_ROW_LOCATOR));
                 
-                for (int i = 1; i <= 10; i++)
-                {
-                    var row = GetElementByXPath($"//tbody/tr[{i}]");
-                    var rowElements =row.FindElement(By.XPath(TABLE_ROW_AGE_LOCATOR)); 
-                }
+                ////for (int i = 1; i <= 10; i++)
+               // {
+                  ////  var row = GetElementByXPath($"//tbody/tr[{i}]");
+                  //  var rowElements =row.FindElement(By.XPath(TABLE_ROW_AGE_LOCATOR)); 
+               // }
                 /*foreach (var row in allRows.ToList())
                 {
                     if (int.Parse(row.FindElement(By.XPath(TABLE_ROW_AGE_LOCATOR)).Text) > age &&
@@ -74,8 +92,8 @@ internal class TableSortAndSearch : BaseClass
                     row.FindElement(By.XPath(TABLE_ROW_OFFICE_LOCATOR)).Text));
 
                 selectedPeople.AddRange(dataToReturn);*/
-                GetElementById(NEXT_BUTTON_LOCATOR).Click();
-            }
+                
+            //}
 
             return selectedPeople;
         }
