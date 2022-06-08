@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +16,10 @@
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.2.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="102.0.5005.6102" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Yandex\Yandex.csproj" />
   </ItemGroup>
 
 </Project>
