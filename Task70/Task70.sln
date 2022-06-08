@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yandex", "Yandex\Yandex.csproj", "{199C1666-C14A-40F4-941C-190F72A88C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestYandex", "TestYandex\TestYandex.csproj", "{A3AF644D-B47B-4010-9520-33833603A1AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{199C1666-C14A-40F4-941C-190F72A88C98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{199C1666-C14A-40F4-941C-190F72A88C98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{199C1666-C14A-40F4-941C-190F72A88C98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{199C1666-C14A-40F4-941C-190F72A88C98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3AF644D-B47B-4010-9520-33833603A1AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3AF644D-B47B-4010-9520-33833603A1AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3AF644D-B47B-4010-9520-33833603A1AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3AF644D-B47B-4010-9520-33833603A1AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8ED34BF3-CDCE-4905-AF05-F9A7B427222A}
+	EndGlobalSection
+EndGlobal
