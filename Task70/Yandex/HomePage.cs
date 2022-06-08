@@ -10,9 +10,10 @@ internal class HomePage : BaseClass
 
     [FindsBy(How =How.CssSelector, Using = "a[class*='login-link']")]
     IWebElement LoginLink;
+
     public HomePage(IWebDriver driver) : base(driver)
     {
-        
+        Load();
     }
 
     public void Load()

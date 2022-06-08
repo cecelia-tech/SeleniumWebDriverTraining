@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 
 namespace Yandex;
@@ -12,6 +13,7 @@ internal class LogInPage : BaseClass
     IWebElement UsernameInput;
     [FindsBy(How = How.Id, Using = "passp:sign-in")]
     IWebElement LoginButton;
+
     public LogInPage(IWebDriver driver) : base(driver)
     {
     }
@@ -20,7 +22,10 @@ internal class LogInPage : BaseClass
     {
         UsernameInput.SendKeys(username);
         LoginButton.Click();
-        Thread.Sleep(1000);
+
+        new WebDriverWait(_driver, TimeSpan.FromSeconds(5))
+            .Until((condition) => PasswordInput.Displayed);
+
         PasswordInput.SendKeys(password);
         LoginButton.Click();
 

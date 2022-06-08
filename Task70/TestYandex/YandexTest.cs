@@ -1,5 +1,3 @@
-
-
 namespace TestYandex;
 
 public class Tests
@@ -17,7 +15,6 @@ public class Tests
     public void TestYandexLogin()
     {
         HomePage homePage = new HomePage(_driver);
-        homePage.Load();
         Assert.True(homePage.IsLoaded(), "Home page is not loaded");
         var loginPage = homePage.ClickLogIn();
         Assert.IsTrue(loginPage.IsLoaded(), "Login page is not loaded");
