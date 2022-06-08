@@ -9,7 +9,7 @@ internal class HomePageAfterLogin : BaseClass
 {
     const string TITLE = "Yandex";
 
-    [FindsBy(How =How.CssSelector, Using = ".username")]
+    [FindsBy(How = How.CssSelector, Using = ".username")]
     IWebElement UsernameLink;
 
     public HomePageAfterLogin(IWebDriver driver) : base(driver)
@@ -27,7 +27,6 @@ internal class HomePageAfterLogin : BaseClass
         {
             return false;
         }
-        
     }
     public bool IsLoggedIn()
     {

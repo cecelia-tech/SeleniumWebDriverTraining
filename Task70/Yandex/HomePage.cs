@@ -8,7 +8,7 @@ internal class HomePage : BaseClass
     const string TITLE = "Yandex";
     const string URL = "https://yandex.lt/";
 
-    [FindsBy(How =How.CssSelector, Using = "a[class*='login-link']")]
+    [FindsBy(How = How.CssSelector, Using = "a[class*='login-link']")]
     IWebElement LoginLink;
 
     public HomePage(IWebDriver driver) : base(driver)
