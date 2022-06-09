@@ -1,18 +1,7 @@
-
-
 namespace TestYandex;
 
-public class Tests
+public class Tests : TestBaseClass
 {
-    IWebDriver _driver;
-
-    [SetUp]
-    public void Setup()
-    {
-        _driver = new ChromeDriver();
-        _driver.Manage().Window.Maximize();
-    }
-
     [Test]
     public void TestYandexLogin()
     {
@@ -22,14 +11,9 @@ public class Tests
         Assert.IsTrue(loginPage.IsLoaded(), "Login page is not loaded");
         var homePageAfterLogin = loginPage.LogIn("SeleniumTest789@yandex.com", "belekoks_789!");
         Assert.IsTrue(homePageAfterLogin.IsLoaded(), "Home page after login not loaded");
-        Screenshot savedImage = ((ITakesScreenshot)_driver).GetScreenshot();
-        savedImage.SaveAsFile("homePage.jpeg", ScreenshotImageFormat.Jpeg);
-        Assert.IsTrue(homePageAfterLogin.IsLoggedIn(), "Username link is not loaded");
-    }
 
-    [TearDown]
-    public void CleanUp()
-    {
-        _driver.Quit();
+        TakeScreenShotAsFile("example1");
+
+        Assert.IsTrue(homePageAfterLogin.IsLoggedIn(), "Username link is not loaded");
     }
 }
