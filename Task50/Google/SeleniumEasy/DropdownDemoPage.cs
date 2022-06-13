@@ -7,7 +7,6 @@ internal class DropdownDemoPage : BaseClass
 {
     const string URL = "https://demo.seleniumeasy.com/basic-select-dropdown-demo.html";
     const string MULTISELECT_LOCATOR = "multi-select";
-    
 
     public DropdownDemoPage(IWebDriver driver) : base(driver)
     {
@@ -25,15 +24,7 @@ internal class DropdownDemoPage : BaseClass
             multiSelect.SelectByIndex(2);
         }
 
-        IList<IWebElement> options = new List<IWebElement>();
-
-        foreach (var option in multiSelect.Options)
-        {
-            if (option.Selected)
-            {
-                options.Add(option);
-            }
-        }
+        IList<IWebElement> options = multiSelect.AllSelectedOptions;
 
         return options.Count;
     }

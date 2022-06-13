@@ -3,7 +3,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace Task50Pages.SeleniumEasy;
 
-internal class PopUpAlarts : BaseClass
+internal class PopUpAlerts : BaseClass
 {
     const string URL = "https://demo.seleniumeasy.com/javascript-alert-box-demo.html";
     const string CONFIRM_BOX_BUTTON_LOCATOR = "//*[@id='confirm-demo']/preceding-sibling::button";
@@ -11,7 +11,7 @@ internal class PopUpAlarts : BaseClass
     const string PROMPT_BOX_BUTTON_LOCATOR = "//p[@id='prompt-demo']/preceding-sibling::button";
     const string PROMPT_BOX_VALUE_LOCATOR = "prompt-demo";
     
-    public PopUpAlarts(IWebDriver driver) : base(driver)
+    public PopUpAlerts(IWebDriver driver) : base(driver)
     {
         _driver.Url = URL;
     }

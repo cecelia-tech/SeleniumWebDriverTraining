@@ -5,6 +5,7 @@ namespace Task50Pages;
 internal abstract class BaseClass
 {
     protected IWebDriver _driver;
+
     public BaseClass(IWebDriver driver)
     {
         _driver = driver;

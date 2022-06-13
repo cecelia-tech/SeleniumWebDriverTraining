@@ -9,6 +9,7 @@ internal class ProgressBarPage : BaseClass
     const string URL = "https://demo.seleniumeasy.com/bootstrap-download-progress-demo.html";
     const string DOWNLOAD_BUTTON_LOCATOR = "cricle-btn";
     const string PERCENT_TEXT_LOCATOR = ".percenttext";
+
     public ProgressBarPage(IWebDriver driver) : base(driver)
     {
         driver.Url = URL;

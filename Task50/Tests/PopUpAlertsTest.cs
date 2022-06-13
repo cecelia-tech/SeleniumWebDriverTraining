@@ -4,13 +4,13 @@
 public class PopUpAlertsTest : TestBaseClass
 {
     const string TEXT_FOR_PROMPT_BOX = "Test";
-    PopUpAlarts popUpAlerts;
+    PopUpAlerts popUpAlerts;
 
     //2 tests for Confirm box
     [Test]
     public void TestDeclineConfirmBox()
     {
-        popUpAlerts = new PopUpAlarts(_driver);
+        popUpAlerts = new PopUpAlerts(_driver);
 
         Assert.IsTrue(popUpAlerts.DeclineConfirmBox().Contains("Cancel"), "Text doesn't contain expected value");
     }
@@ -18,7 +18,7 @@ public class PopUpAlertsTest : TestBaseClass
     [Test]
     public void TestAcceptConfirmBox()
     {
-        popUpAlerts = new PopUpAlarts(_driver);
+        popUpAlerts = new PopUpAlerts(_driver);
 
         Assert.IsTrue(popUpAlerts.AcceptConfirmBox().Contains("OK"), "Text doesn't contain expected value");
     }
@@ -27,7 +27,7 @@ public class PopUpAlertsTest : TestBaseClass
     [Test]
     public void TestAcceptPromptBoxAlert()
     {
-        popUpAlerts = new PopUpAlarts(_driver);
+        popUpAlerts = new PopUpAlerts(_driver);
 
         var text = popUpAlerts.AcceptPromptBoxAlert(TEXT_FOR_PROMPT_BOX);
 
