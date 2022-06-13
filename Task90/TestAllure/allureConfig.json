@@ -1,0 +1,13 @@
+﻿{
+  "allure": {
+    "directory": "C:\\Users\\VitaGriciute\\source\\repos\\SeleniumWebDriverTraining\\Task90\\TestAllure\\AllureResults",
+    "links": [
+      "https://github.com/nunit/docs/issues?utf8=✓&q={issue}",
+      "https://github.com/cecelia-tech/SeleniumWebDriverTraining/tree/Task90",
+      "{link}"
+    ],
+    "brokenTestData": [
+      "System.Exception"
+    ]
+  }
+}

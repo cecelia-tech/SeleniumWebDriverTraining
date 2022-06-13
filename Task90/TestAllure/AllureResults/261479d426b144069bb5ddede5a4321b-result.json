@@ -1,0 +1,67 @@
+{
+  "uuid": "26ece820-4bc1-480f-996e-58a8a2f45e5b-tr-0-1001",
+  "historyId": "TestAllure.Tests.Test1",
+  "fullName": "TestAllure.Tests.Test1",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "LT-NBW-0205"
+    },
+    {
+      "name": "package",
+      "value": "TestAllure"
+    },
+    {
+      "name": "testMethod",
+      "value": "Test1"
+    },
+    {
+      "name": "testClass",
+      "value": "Tests"
+    }
+  ],
+  "links": [],
+  "name": "Test1",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "Test1",
+    "trace": "   at TestAllure.Tests.Test1() in C:\\Users\\VitaGriciute\\source\\repos\\SeleniumWebDriverTraining\\Task90\\TestAllure\\UnitTest1.cs:line 14\r\n"
+  },
+  "stage": "finished",
+  "steps": [
+    {
+      "name": "Test1",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "",
+        "trace": "   at TestAllure.Tests.Test1() in C:\\Users\\VitaGriciute\\source\\repos\\SeleniumWebDriverTraining\\Task90\\TestAllure\\UnitTest1.cs:line 14\r\n"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "ccdf51fe62c347c6b0053777d70a37b2-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1655122304139,
+      "stop": 1655122304183
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1655122304139,
+  "stop": 1655122304187
+}
