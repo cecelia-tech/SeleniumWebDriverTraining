@@ -1,5 +1,6 @@
 namespace TestYandex;
 
+[AllureNUnit]
 public class Tests
 {
     IWebDriver _driver;
@@ -12,6 +13,10 @@ public class Tests
     }
 
     [Test]
+    [AllureTag("Allure", "Debug")]
+    [AllureSeverity(SeverityLevel.critical)]
+    [AllureOwner("Vita")]
+    [AllureName("Login to Yandex test")]
     public void TestYandexLogin()
     {
         HomePage homePage = new HomePage(_driver);
