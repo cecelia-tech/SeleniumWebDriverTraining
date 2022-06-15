@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenoid", "Selenoid\Selenoid.csproj", "{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {013A4250-5490-4FF8-8A53-EE786327DF2D}
+	EndGlobalSection
+EndGlobal
