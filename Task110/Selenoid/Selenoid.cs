@@ -6,11 +6,13 @@ using System;
 
 namespace Selenoid;
 
-public class Tests
+public class SelenoidTests
 {
     private WebDriver _driver;
     private const string TEST_URL = "https://www.google.com/";
-    
+    private const string TERMS_CONDITIONS_BUTTON = "L2AGLb";
+    private const string SEARCH_INPUT = "//input[@name = 'q']";
+
     [SetUp]
     public void Setup()
     {
@@ -21,18 +23,25 @@ public class Tests
     [Test]
     public void Test1()
     {
-        _driver.Url = TEST_URL;
-        _driver.FindElement(By.Id("L2AGLb")).Click();
-        var searchBar = _driver.FindElement(By.XPath("//input[@name = 'q']"));
-        //searchBar.Click();
-        searchBar.SendKeys("Selenoid");
-        TakeScreenShotAsFile("sample");
+        try
+        {
+            _driver.Url = TEST_URL;
+            _driver.FindElement(By.Id(TERMS_CONDITIONS_BUTTON)).Click();
+            _driver.FindElement(By.XPath(SEARCH_INPUT)).SendKeys("Selenoid");
+
+            TakeScreenShotAsFile(_driver.Title);
+        }
+        catch (Exception e)
+        {
+            Assert.Fail(e.Message);
+        }
+        
     }
 
     private void TakeScreenShotAsFile(string filename)
     {
         Screenshot savedImage = ((ITakesScreenshot)_driver).GetScreenshot();
-        savedImage.SaveAsFile($"C:\\Users\\VitaGriciute\\source\\repos\\SeleniumWebDriverTraining\\Task110\\Selenoid\\ScreenShots\\{filename}.png", ScreenshotImageFormat.Png);
+        savedImage.SaveAsFile(@$"C:\Users\VitaGriciute\source\repos\SeleniumWebDriverTraining\Task110\Selenoid\ScreenShots\{filename}.png", ScreenshotImageFormat.Png);
     }
 
     [TearDown]
