@@ -3,15 +3,14 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
 using System;
+using Google;
 
 namespace Selenoid;
 
 public class SelenoidTests
 {
-    private WebDriver _driver;
-    private const string TEST_URL = "https://www.google.com/";
-    private const string TERMS_CONDITIONS_BUTTON = "L2AGLb";
-    private const string SEARCH_INPUT = "//input[@name = 'q']";
+    private IWebDriver _driver;
+    private const string SEARCH_TEXT = "Selenium";
 
     [SetUp]
     public void Setup()
@@ -21,21 +20,22 @@ public class SelenoidTests
     }
 
     [Test]
-    public void Test1()
+    public void TestSearchResultsLoaded()
     {
+        HomePage homePage = new HomePage(_driver);
+
         try
         {
-            _driver.Url = TEST_URL;
-            _driver.FindElement(By.Id(TERMS_CONDITIONS_BUTTON)).Click();
-            _driver.FindElement(By.XPath(SEARCH_INPUT)).SendKeys("Selenoid");
+            Assert.IsTrue(homePage.IsLoaded(), "Home page was not loaded");
+            var searchPage = homePage.Search(SEARCH_TEXT);
+            Assert.IsTrue(searchPage.IsLoaded(), "Search page was not loaded");
 
-            TakeScreenShotAsFile(_driver.Title);
+            TakeScreenShotAsFile(SEARCH_TEXT);
         }
         catch (Exception e)
         {
             Assert.Fail(e.Message);
         }
-        
     }
 
     private void TakeScreenShotAsFile(string filename)

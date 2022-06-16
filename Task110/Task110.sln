@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selenoid", "Selenoid\Selenoid.csproj", "{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google", "Google\Google.csproj", "{ECF56BF0-1671-4411-B8D4-BE9CCDE7BCBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA5F181F-B781-4C4E-B8B6-238931ECC9DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECF56BF0-1671-4411-B8D4-BE9CCDE7BCBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECF56BF0-1671-4411-B8D4-BE9CCDE7BCBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECF56BF0-1671-4411-B8D4-BE9CCDE7BCBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECF56BF0-1671-4411-B8D4-BE9CCDE7BCBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
