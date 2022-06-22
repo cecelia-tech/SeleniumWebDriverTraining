@@ -1,7 +1,6 @@
-﻿namespace AutomationPractice
-{
-    public class Class1
-    {
+﻿namespace AutomationPractice;
 
-    }
+public class Class1
+{
+
 }
