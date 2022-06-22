@@ -5,7 +5,7 @@ using SeleniumExtras.WaitHelpers;
 
 namespace AutomationPractice;
 
-internal class LoginPage : BaseClass
+internal class LoginPage
 {
     private const string URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
 
@@ -16,21 +16,20 @@ internal class LoginPage : BaseClass
     
     private By errorMessage = By.Id("create_account_error");
 
-    public LoginPage(IWebDriver driver) : base(driver)
+    public LoginPage()
     {
-        Load();
     }
 
-    private void Load()
-    {
-        _driver.Url = URL;
-    }
+    //private void Load()
+    //{
+    //    _driver.Url = URL;
+    //}
 
     internal bool IsLoaded()
     {
         try
         {
-            return new WebDriverWait(_driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("create-account_form"))).Displayed;
+            return new WebDriverWait(BrowserFactory.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("create-account_form"))).Displayed;
         }
         catch (TimeoutException)
         {
@@ -38,7 +37,7 @@ internal class LoginPage : BaseClass
         }
     }
 
-    internal SignUpPage FillEmail(string email)
+    internal SignUpPage SubmitEmailForm(string email)
     {
         SetEmail(email);
         ClickCreateAccountButton();
@@ -48,7 +47,7 @@ internal class LoginPage : BaseClass
             throw new ArgumentException("Wrong email format or this email already exists");
         }
 
-        return new SignUpPage(_driver);
+        return new SignUpPage();
     }
 
     private void SetEmail(string email)
@@ -64,6 +63,6 @@ internal class LoginPage : BaseClass
 
     private bool IsEmailCorrect()
     {
-        return new WebDriverWait(_driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.InvisibilityOfElementLocated(errorMessage));
+        return new WebDriverWait(BrowserFactory.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.InvisibilityOfElementLocated(errorMessage));
     }
 }

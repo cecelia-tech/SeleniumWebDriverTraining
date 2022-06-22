@@ -10,7 +10,7 @@ namespace AutomationPractice;
 internal class SignUpPage : BaseClass
 {
     private By signUpForm = By.Id("account-creation_form");
-    private IWebDriver _driver;
+    
     [FindsBy(How = How.Id, Using = "customer_firstname")]
     private IWebElement personalInfoFirstNameInputLocator;
     [FindsBy(How = How.Id, Using = "customer_lastname")]
@@ -38,7 +38,7 @@ internal class SignUpPage : BaseClass
     [FindsBy(How = How.Id, Using = "submitAccount")]
     private IWebElement registerButton;
 
-    public SignUpPage(IWebDriver driver)
+    public SignUpPage()
     {
     }
 
@@ -46,7 +46,7 @@ internal class SignUpPage : BaseClass
     {
         try
         {
-            return new WebDriverWait(_driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(signUpForm)).Displayed;
+            return new WebDriverWait(BrowserFactory.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(signUpForm)).Displayed;
         }
         catch (TimeoutException)
         {
@@ -71,7 +71,7 @@ internal class SignUpPage : BaseClass
         SetInputValue(this.alias, alias);
         ClickElement(registerButton);
 
-        return new UserHomePage(_driver);
+        return new UserHomePage();
     }
 
     

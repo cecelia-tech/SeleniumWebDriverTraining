@@ -9,7 +9,7 @@ namespace AutomationPractice
 {
     internal class UserHomePage : BaseClass
     {
-        public UserHomePage(IWebDriver driver) : base(driver)
+        public UserHomePage()
         {
         }
     }

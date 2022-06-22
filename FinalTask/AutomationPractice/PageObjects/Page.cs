@@ -11,9 +11,9 @@ internal static class Page
         return page;
     }
 
-    public static LoginPage Home
+    public static UserHomePage UserHome
     {
-        get { return GetPage<LoginPage>(); }
+        get { return GetPage<UserHomePage>(); }
     }
 
     public static LoginPage Login
