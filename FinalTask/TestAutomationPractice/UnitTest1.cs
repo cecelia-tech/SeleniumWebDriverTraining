@@ -11,14 +11,14 @@ public class Tests
     [OneTimeSetUp]
     public void Setup()
     {
-        BrowserFactory.SetBrowser("Chrome");
+        Environment.SetBrowser("Chrome");
         
     }
 
     [Test]
     public void Test1()
     {
-        BrowserFactory.LoadApplication(URL);
+        Environment.LoadApplication(URL);
         var signupPage = Page.Login.SubmitEmailForm("sample@sample1.com");
 
     }
@@ -26,6 +26,6 @@ public class Tests
     [OneTimeTearDown]
     public void CleanUp()
     {
-        BrowserFactory.CloseAllDrivers();
+        Environment.CloseAllDrivers();
     }
 }
