@@ -29,7 +29,7 @@ internal class LoginPage
     {
         try
         {
-            return new WebDriverWait(Environment.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("create-account_form"))).Displayed;
+            return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("create-account_form"))).Displayed;
         }
         catch (TimeoutException)
         {
@@ -63,6 +63,6 @@ internal class LoginPage
 
     private bool IsEmailCorrect()
     {
-        return new WebDriverWait(Environment.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.InvisibilityOfElementLocated(errorMessage));
+        return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.InvisibilityOfElementLocated(errorMessage));
     }
 }

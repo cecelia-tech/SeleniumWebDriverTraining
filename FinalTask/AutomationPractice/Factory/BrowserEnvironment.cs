@@ -2,23 +2,22 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
-using System;
 
 namespace AutomationPractice;
 
-internal class Environment
+internal static class BrowserEnvironment
 {
-    private static readonly IDictionary<string, IWebDriver> Drivers = new Dictionary<string, IWebDriver>()
-    {
-        {"Firefox", new FirefoxDriver()},
-        {"Chrome",  new ChromeDriver()},
-        {"SelenoidFireFox",  new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new FirefoxOptions())},
-        {"SelenoidChrome",  new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new ChromeOptions())},
-        {"SauceLabsFireFox", new SauceLabsSetUp().SetSauceLabsBrowser("Firefox") },
-        {"SauceLabsChrome", new SauceLabsSetUp().SetSauceLabsBrowser("Chrome") }
-    };
-    private string Browser { get; set; }
-    private string Platform { get; set; }
+    //private static readonly IDictionary<string, IWebDriver> Drivers = new Dictionary<string, IWebDriver>()
+    //{
+    //    {"Firefox", new FirefoxDriver()},
+    //    {"Chrome",  new ChromeDriver()},
+    //    {"SelenoidFireFox",  new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new FirefoxOptions())},
+    //    {"SelenoidChrome",  new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new ChromeOptions())},
+    //    {"SauceLabsFireFox", new SauceLabsSetUp().SetSauceLabsBrowser("firefox") },
+    //    {"SauceLabsChrome", new SauceLabsSetUp().SetSauceLabsBrowser("chrome") }
+    //};
+    private static string Browser { get; set; }
+    private static string Platform { get; set; }
 
     private static IWebDriver driver;
 
@@ -34,24 +33,21 @@ internal class Environment
         }
     }
 
-    public Environment(string browser, string environment)
+    internal static void SetEnvironment(string environment, string browser)
     {
         Platform = environment?.ToLower() ?? throw new ArgumentNullException(nameof(environment));
         Browser = browser?.ToLower() ?? throw new ArgumentNullException(nameof(browser));
-    }
 
-    internal void SetEnvironment()
-    {
         if (Platform.Equals("local"))
         {
             switch (Browser)
             {
                 case "firefox":
-                    driver = Drivers["Firefox"];
+                    driver = new FirefoxDriver();
                     break;
 
                 case "chrome":
-                    driver = Drivers["Chrome"];
+                    driver = new ChromeDriver();
                     break;
 
                 default: throw new ArgumentException("No such browser");
@@ -61,11 +57,13 @@ internal class Environment
             switch (Browser)
             {
                 case "firefox":
-                    driver = Drivers["SelenoidFireFox"];
+                    var firefoxOptions = new FirefoxOptions();
+                    driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), firefoxOptions);
                     break;
 
                 case "chrome":
-                    driver = Drivers["SelenoidChrome"];
+                    var chromeOptions = new ChromeOptions();
+                    driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), chromeOptions);
                     break;
 
                 default: throw new ArgumentException("No such browser");
@@ -76,12 +74,12 @@ internal class Environment
             switch (Browser)
             {
                 case "firefox":
-                    driver = Drivers["SauceLabsFireFox"];
+                    driver = new SauceLabsSetUp().SetSauceLabsBrowser("firefox");
 
                     break;
 
                 case "chrome":
-                    driver = Drivers["SauceLabsChrome"];
+                    driver = new SauceLabsSetUp().SetSauceLabsBrowser("chrome");
 
                     break;
 
@@ -101,9 +99,6 @@ internal class Environment
 
     internal static void CloseAllDrivers()
     {
-        foreach (var key in Drivers.Keys)
-        {
-            Drivers[key].Quit();
-        }
+        driver.Quit();
     }
 }

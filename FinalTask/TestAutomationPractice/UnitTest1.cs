@@ -7,18 +7,18 @@ namespace TestAutomationPractice;
 public class Tests
 {
     private const string URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
-    
+
     [OneTimeSetUp]
     public void Setup()
     {
-        Environment.SetBrowser("Chrome");
+        BrowserEnvironment.SetEnvironment("selenoid", "chrome");
         
     }
 
     [Test]
     public void Test1()
     {
-        Environment.LoadApplication(URL);
+        BrowserEnvironment.LoadApplication(URL);
         var signupPage = Page.Login.SubmitEmailForm("sample@sample1.com");
 
     }
@@ -26,6 +26,6 @@ public class Tests
     [OneTimeTearDown]
     public void CleanUp()
     {
-        Environment.CloseAllDrivers();
+        BrowserEnvironment.CloseAllDrivers();
     }
 }

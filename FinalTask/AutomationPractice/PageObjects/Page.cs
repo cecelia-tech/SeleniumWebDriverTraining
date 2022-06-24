@@ -7,7 +7,7 @@ internal static class Page
     private static T GetPage<T>() where T : new()
     {
         var page = new T();
-        PageFactory.InitElements(Environment.Driver, page);
+        PageFactory.InitElements(BrowserEnvironment.Driver, page);
         return page;
     }
 
