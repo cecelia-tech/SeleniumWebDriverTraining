@@ -42,7 +42,7 @@ internal class LoginPage
         SetEmail(email);
         ClickCreateAccountButton();
 
-        if (!IsEmailCorrect())
+        if (IsEmailIncorrect())
         {
             throw new ArgumentException("Wrong email format or this email already exists");
         }
@@ -61,8 +61,16 @@ internal class LoginPage
         crteateAccountButton.Click();
     }
 
-    private bool IsEmailCorrect()
+    private bool IsEmailIncorrect()
     {
-        return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.InvisibilityOfElementLocated(errorMessage));
+        try
+        {
+            return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
+                .Until(ExpectedConditions.ElementIsVisible(By.Id("create_account_error"))).Displayed;
+        }
+        catch (TimeoutException)
+        {
+            return false;
+        }
     }
 }

@@ -97,8 +97,8 @@ internal static class BrowserEnvironment
         Driver.Url = url;
     }
 
-    internal static void CloseAllDrivers()
+    internal static void CloseDriver()
     {
-        driver.Quit();
+        driver?.Quit();
     }
 }

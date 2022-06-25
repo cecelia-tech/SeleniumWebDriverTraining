@@ -11,21 +11,44 @@ public class Tests
     [OneTimeSetUp]
     public void Setup()
     {
-        BrowserEnvironment.SetEnvironment("selenoid", "chrome");
+        BrowserEnvironment.SetEnvironment("local", "chrome");
         
     }
 
     [Test]
-    public void Test1()
+    public void TestCreateAcount()
     {
-        BrowserEnvironment.LoadApplication(URL);
-        var signupPage = Page.Login.SubmitEmailForm("sample@sample1.com");
+        try
+        {
+            BrowserEnvironment.LoadApplication(URL);
+            var signupPage = Page.Login.SubmitEmailForm("sample@sample.com");
+            Assert.IsTrue(signupPage.IsLoaded(), "SignUp page was not loaded");
+        }
+        catch (Exception e)
+        {
+            Assert.Fail(e.Message);
+        }
+    }
 
+    [Test]
+    public void TestSignUp()
+    {
+        try
+        {
+            BrowserEnvironment.LoadApplication(URL);
+            var signupPage = Page.Login.SubmitEmailForm("sample@sample.com");
+            Assert.IsTrue(signupPage.IsLoaded(), "SignUp page was not loaded");
+        }
+        catch (Exception e)
+        {
+            Assert.Fail(e.Message);
+        }
+        
     }
 
     [OneTimeTearDown]
     public void CleanUp()
     {
-        BrowserEnvironment.CloseAllDrivers();
+        BrowserEnvironment.CloseDriver();
     }
 }

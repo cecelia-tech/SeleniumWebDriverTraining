@@ -46,7 +46,8 @@ internal class SignUpPage : BaseClass
     {
         try
         {
-            return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(signUpForm)).Displayed;
+            return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
+                .Until(ExpectedConditions.ElementIsVisible(signUpForm)).Displayed;
         }
         catch (TimeoutException)
         {
