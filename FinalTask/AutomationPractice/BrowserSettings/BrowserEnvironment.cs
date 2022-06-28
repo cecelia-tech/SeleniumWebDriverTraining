@@ -7,15 +7,6 @@ namespace AutomationPractice;
 
 internal static class BrowserEnvironment
 {
-    //private static readonly IDictionary<string, IWebDriver> Drivers = new Dictionary<string, IWebDriver>()
-    //{
-    //    {"Firefox", new FirefoxDriver()},
-    //    {"Chrome",  new ChromeDriver()},
-    //    {"SelenoidFireFox",  new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new FirefoxOptions())},
-    //    {"SelenoidChrome",  new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), new ChromeOptions())},
-    //    {"SauceLabsFireFox", new SauceLabsSetUp().SetSauceLabsBrowser("firefox") },
-    //    {"SauceLabsChrome", new SauceLabsSetUp().SetSauceLabsBrowser("chrome") }
-    //};
     private static string Browser { get; set; }
     private static string Platform { get; set; }
 
@@ -33,9 +24,9 @@ internal static class BrowserEnvironment
         }
     }
 
-    internal static void SetEnvironment(string environment, string browser)
+    internal static void SetEnvironment(string platform, string browser)
     {
-        Platform = environment?.ToLower() ?? throw new ArgumentNullException(nameof(environment));
+        Platform = platform?.ToLower() ?? throw new ArgumentNullException(nameof(platform));
         Browser = browser?.ToLower() ?? throw new ArgumentNullException(nameof(browser));
 
         if (Platform.Equals("local"))

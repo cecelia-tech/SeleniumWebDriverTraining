@@ -10,8 +10,9 @@ using System.Threading.Tasks;
 
 namespace AutomationPractice.PageObjects;
 
-public class CartPage : BaseClass, ILoad
+public class CartPage : BaseClass, ILoad<CartPage>
 {
+    private const string URL = "http://automationpractice.com/index.php?controller=order";
     [FindsBy(How = How.Id, Using = "total_price")]
     private IWebElement totalPrice;
 
@@ -41,8 +42,10 @@ public class CartPage : BaseClass, ILoad
         }
     }
 
-    public void LoadPage()
+    public CartPage LoadPage()
     {
-        throw new NotImplementedException();
+        BrowserEnvironment.Driver.Url = URL;
+
+        return Page.CartPage;
     }
 }

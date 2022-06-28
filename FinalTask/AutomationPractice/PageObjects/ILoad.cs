@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace AutomationPractice.PageObjects;
 
-namespace AutomationPractice.PageObjects;
-
-public interface ILoad
+public interface ILoad<T>
 {
-    public void LoadPage();
+    public T LoadPage();
     public bool IsPageLoaded();
 }

@@ -5,8 +5,10 @@ using SeleniumExtras.WaitHelpers;
 
 namespace AutomationPractice.PageObjects;
 
-public class DressesPage : BaseClass, ILoad
+public class DressesPage : BaseClass, ILoad<DressesPage>
 {
+    private const string URL = "http://automationpractice.com/index.php?id_category=8&controller=category";
+
     [FindsBy(How = How.CssSelector, Using = ".product_list > li:nth-of-type(1) > div")]
     private IWebElement firstDress;
     [FindsBy(How = How.CssSelector, Using = ".product_list > li:nth-of-type(1) a[title='Add to cart']")]
@@ -59,8 +61,10 @@ public class DressesPage : BaseClass, ILoad
         }
     }
 
-    public void LoadPage()
+    public DressesPage LoadPage()
     {
-        throw new NotImplementedException(); 
+        BrowserEnvironment.Driver.Navigate().GoToUrl(URL);
+
+        return Page.DressesPage;
     }
 }

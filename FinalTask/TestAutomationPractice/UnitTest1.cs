@@ -7,16 +7,12 @@ namespace TestAutomationPractice;
 
 [AllureNUnit]
 [TestFixture]
-public class Tests
+public class AutomationPracticeTests : TestBaseClass
 {
+
     private const string URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     private const string MY_WISHLIST_NAME = "DreamPurchases";
 
-    [OneTimeSetUp]
-    public void Setup()
-    {
-        BrowserEnvironment.SetEnvironment("local", "chrome");
-    }
 
     [Test]
     public void TestCreateAcount()
@@ -33,7 +29,6 @@ public class Tests
         }
     }
 
-
     [Test]
     [TestCaseSource(typeof(DataFromFile), nameof(DataFromFile.RegisterFormData))]
     public void TestSignUp(string firstName, string lastName, string email, string password,
@@ -43,7 +38,7 @@ public class Tests
         {
             BrowserEnvironment.LoadApplication(URL);
             var signupPage = Page.Login.SubmitEmailForm(DataFromFile.GetElementValue("email"));
-            Assert.IsTrue(signupPage.IsLoaded(), "SignUp page was not loaded");
+            Assert.IsTrue(signupPage.IsPageLoaded(), "SignUp page was not loaded");
             var userHomePage = signupPage.FillRegistrationForm(firstName, lastName, email, password,
         address, city, state, zipCode, country, mobile_phone, alias);
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
@@ -146,7 +141,7 @@ public class Tests
             var logInPage = Page.Login;
             var userHomePage = logInPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
-            var dressesPage = userHomePage.ClickDresses();
+            var dressesPage = userHomePage.ClickDressesOption();
             Assert.IsTrue(dressesPage.IsPageLoaded(), "Dresses page was not loaded");
             dressesPage = dressesPage.AddThreeDressesToTheCart();
             var cartPage = dressesPage.GoToCart();
@@ -158,11 +153,5 @@ public class Tests
         {
             Assert.Fail(e.Message);
         }
-    }
-
-    [OneTimeTearDown]
-    public void CleanUp()
-    {
-        BrowserEnvironment.CloseDriver();
     }
 }

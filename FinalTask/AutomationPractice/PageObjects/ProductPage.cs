@@ -2,20 +2,14 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutomationPractice.PageObjects;
 
-public class ProductPage : BaseClass, ILoad
+public class ProductPage : BaseClass, ILoad<ProductPage>
 {
+    private const string URL = "http://automationpractice.com/index.php?id_product=7&controller=product";
     [FindsBy(How = How.Id, Using = "wishlist_button")]
     private IWebElement wishListLink;
-    [FindsBy(How = How.CssSelector, Using = "a[title='Close']")]
-    private IWebElement popUpCloseButton;
 
     public bool IsPageLoaded()
     {
@@ -30,9 +24,10 @@ public class ProductPage : BaseClass, ILoad
         }
     }
 
-    public void LoadPage()
+    public ProductPage LoadPage()
     {
         throw new NotImplementedException();
+        return Page.ProductPage;
     }
 
     public ProductPage AddToWishList()

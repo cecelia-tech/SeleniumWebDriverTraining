@@ -51,4 +51,9 @@ public static class Page
     {
         get { return GetPage<CartPage>(); }
     }
+
+    public static HomePage HomePage
+    {
+        get { return GetPage<HomePage>(); }
+    }
 }

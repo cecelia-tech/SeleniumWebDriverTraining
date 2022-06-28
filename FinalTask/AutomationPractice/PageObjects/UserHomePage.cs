@@ -22,7 +22,7 @@ namespace AutomationPractice
             return Page.WishLists;
         }
 
-        public DressesPage ClickDresses()
+        public DressesPage ClickDressesOption()
         {
             ClickElement(dresses);
 

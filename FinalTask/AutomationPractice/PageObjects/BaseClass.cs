@@ -10,15 +10,9 @@ public class BaseClass
 {
     [FindsBy(How = How.ClassName, Using = "account")]
     private IWebElement userHomePage;
+    [FindsBy(How = How.ClassName, Using = "logout")]
+    private IWebElement logout;
     
-    //protected IWebDriver _driver;
-
-    //public BaseClass(IWebDriver driver)
-    //{
-    //    _driver = driver;
-    //    PageFactory.InitElements(_driver, this);
-    //}
-
     protected void SetInputValue(IWebElement element, string? value)
     {
         element.Clear();
@@ -52,5 +46,8 @@ public class BaseClass
         return Page.UserHomePage;
     }
 
-
+    public void Logout()
+    {
+        ClickElement(logout);
+    }
 }
