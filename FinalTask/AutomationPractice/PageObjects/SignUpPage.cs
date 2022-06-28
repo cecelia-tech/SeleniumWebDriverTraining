@@ -3,11 +3,12 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
 using System.Collections;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace AutomationPractice;
 
-internal class SignUpPage : BaseClass
+public class SignUpPage : BaseClass
 {
     private By signUpForm = By.Id("account-creation_form");
     
@@ -47,7 +48,7 @@ internal class SignUpPage : BaseClass
         try
         {
             return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
-                .Until(ExpectedConditions.ElementIsVisible(signUpForm)).Displayed;
+                .Until(ExpectedConditions.ElementIsVisible(By.Id("account-creation_form"))).Displayed;
         }
         catch (TimeoutException)
         {
@@ -65,51 +66,45 @@ internal class SignUpPage : BaseClass
         SetInputValue(addressLastNameInputLocator, lastName);
         SetInputValue(addressInputLocator, address);
         SetInputValue(cityInputLocator, city);
-        SelectDropdownElementByValue(this.state, state);
+        SelectDropdownElementByText(this.state, state);
         SetInputValue(this.zipCode, zipCode);
-        SelectDropdownElementByValue(this.country, country);
+        SelectDropdownElementByText(this.country, country);
         SetInputValue(mobileNumber, mobile_phone);
         SetInputValue(this.alias, alias);
         ClickElement(registerButton);
 
-        return new UserHomePage();
+        return Page.UserHomePage;
     }
 
     
-    private IEnumerable RegisterFormData
-    {
-        get { return GetRegisterFormData(); }
-    }
+    
+    //return from addressDetails in doc.Descendants("address")
+    //       let firstName = addressDetails?.Element("first_name")?.Value
+    //       let lastName = addressDetails?.Element("last_name")?.Value
+    //       let email = addressDetails?.Element("email")?.Value
+    //       let password = addressDetails?.Element("password")?.Value
+    //       let address = addressDetails?.Element("address")?.Value
+    //       let city = addressDetails?.Element("city")?.Value
+    //       let state = addressDetails?.Element("state")?.Value
+    //       let zipCode = addressDetails?.Element("zip_code")?.Value
+    //       let country = addressDetails?.Element("country")?.Value
+    //       let mobile_phone = addressDetails?.Element("mobile_phone")?.Value
+    //       let alias = addressDetails?.Element("alias")?.Value
+    //select  new object [] 
+    //{
+    //    firstName,
+    //    lastName,
+    //    email,
+    //    password,
+    //    address,
+    //    city,
+    //    state,
+    //    zipCode,
+    //    country,
+    //    mobile_phone,
+    //    alias
+    //};
 
-    private IEnumerable GetRegisterFormData()
-    {
-        var doc = XDocument.Load("RegisterFormData.xml");
-
-        return from vars in doc.Descendants("vars")
-               let firstName = vars?.Attribute("first_name")?.Value
-               let lastName = vars?.Attribute("last_name")?.Value
-               let email = vars?.Attribute("email")?.Value
-               let password = vars?.Attribute("password")?.Value
-               let address = vars?.Attribute("address")?.Value
-               let city = vars?.Attribute("city")?.Value
-               let state = vars?.Attribute("state")?.Value
-               let zipCode = vars?.Attribute("zip_code")?.Value
-               let country = vars?.Attribute("country")?.Value
-               let mobile_phone = vars?.Attribute("mobile_phone")?.Value
-               select new object []
-               {
-                   firstName,
-                   lastName,
-                   email,
-                   password,
-                   address,
-                   city,
-                   state,
-                   zipCode,
-                   country,
-                   mobile_phone
-               };
-    }
 
 
 }
