@@ -6,7 +6,7 @@ using SeleniumExtras.WaitHelpers;
 
 namespace AutomationPractice
 {
-    public class UserHomePage : BaseClass, ILoad
+    public class UserHomePage : BaseClass, ILoad<UserHomePage>
     {
         private const string URL = "http://automationpractice.com/index.php?controller=my-account";
 
@@ -42,9 +42,11 @@ namespace AutomationPractice
             }
         }
 
-        public void LoadPage()
+        public UserHomePage LoadPage()
         {
-            BrowserEnvironment.Driver.Url = URL;
+            BrowserEnvironment.LoadApplication(URL);
+
+            return Page.UserHome;
         }
     }
 }

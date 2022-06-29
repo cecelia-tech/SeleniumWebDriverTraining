@@ -2,11 +2,6 @@
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AutomationPractice.PageObjects;
 
@@ -44,7 +39,7 @@ public class CartPage : BaseClass, ILoad<CartPage>
 
     public CartPage LoadPage()
     {
-        BrowserEnvironment.Driver.Url = URL;
+        BrowserEnvironment.LoadApplication(URL);
 
         return Page.CartPage;
     }

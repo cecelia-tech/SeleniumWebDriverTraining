@@ -1,6 +1,4 @@
 ﻿using Allure.Commons;
-using AutomationPractice;
-using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using System.IO;

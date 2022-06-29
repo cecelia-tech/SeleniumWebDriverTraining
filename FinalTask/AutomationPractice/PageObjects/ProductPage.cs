@@ -26,7 +26,8 @@ public class ProductPage : BaseClass, ILoad<ProductPage>
 
     public ProductPage LoadPage()
     {
-        throw new NotImplementedException();
+        BrowserEnvironment.LoadApplication(URL);
+
         return Page.ProductPage;
     }
 

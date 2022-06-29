@@ -1,21 +1,22 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Xml.Linq;
 
-namespace AutomationPractice;
+namespace TestAutomationPractice;
 
-internal class DataFromFile
+[TestFixture]
+internal class DataFromFile2
 {
-    internal static IEnumerable RegisterFormData
+    internal static IEnumerable<TestCaseData> RegisterFormData
     {
         get { return GetRegisterFormData(); }
     }
 
-    private static IEnumerable GetRegisterFormData()
+    private static IEnumerable<TestCaseData> GetRegisterFormData()
     {
         var doc = XDocument.Load("RegisterFormData.xml")?.Element("testdata")?.Element("address");
 
-        var data = new List<string?>()
-        {
+        yield return new TestCaseData(
             doc?.Element("first_name")?.Value,
             doc?.Element("last_name")?.Value,
             doc?.Element("email")?.Value,
@@ -27,9 +28,7 @@ internal class DataFromFile
             doc?.Element("country")?.Value,
             doc?.Element("mobile_phone")?.Value,
             doc?.Element("alias")?.Value
-        };
-
-        return data;
+        );
     }
 
     internal static string? GetElementValue(string element)

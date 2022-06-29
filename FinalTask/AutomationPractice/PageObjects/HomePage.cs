@@ -24,7 +24,7 @@ public class HomePage : BaseClass, ILoad<HomePage>
 
     public HomePage LoadPage()
     {
-        BrowserEnvironment.Driver.Url = URL;
+        BrowserEnvironment.LoadApplication(URL);
 
         return Page.HomePage;
     }

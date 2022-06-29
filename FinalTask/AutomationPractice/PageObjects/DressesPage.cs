@@ -63,7 +63,7 @@ public class DressesPage : BaseClass, ILoad<DressesPage>
 
     public DressesPage LoadPage()
     {
-        BrowserEnvironment.Driver.Navigate().GoToUrl(URL);
+        BrowserEnvironment.LoadApplication(URL);
 
         return Page.DressesPage;
     }

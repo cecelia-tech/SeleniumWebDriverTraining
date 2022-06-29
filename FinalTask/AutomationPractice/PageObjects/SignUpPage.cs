@@ -3,9 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
-using System.Collections;
-using System.Xml;
-using System.Xml.Linq;
 
 namespace AutomationPractice;
 
@@ -63,7 +60,7 @@ public class SignUpPage : BaseClass, ILoad<SignUpPage>
 
     public SignUpPage LoadPage()
     {
-        BrowserEnvironment.Driver.Navigate().GoToUrl(URL);
+        BrowserEnvironment.LoadApplication(URL);
 
         return Page.SignUp;
     }

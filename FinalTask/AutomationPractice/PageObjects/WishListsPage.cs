@@ -37,7 +37,7 @@ public class WishListsPage : BaseClass, ILoad<WishListsPage>
 
     public WishListsPage LoadPage()
     {
-        BrowserEnvironment.Driver.Url = WISHLIST_URL;
+        BrowserEnvironment.LoadApplication(WISHLIST_URL);
 
         return Page.WishLists;
     }

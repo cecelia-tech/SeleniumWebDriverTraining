@@ -1,43 +1,23 @@
-using AutomationPractice;
-using NUnit.Allure.Core;
-using NUnit.Framework;
-using OpenQA.Selenium;
-
 namespace TestAutomationPractice;
 
 [AllureNUnit]
 [TestFixture]
 public class AutomationPracticeTests : TestBaseClass
 {
-
     private const string URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
     private const string MY_WISHLIST_NAME = "DreamPurchases";
 
 
-    [Test]
-    public void TestCreateAcount()
-    {
-        try
-        {
-            BrowserEnvironment.LoadApplication(URL);
-            var signupPage = Page.Login.SubmitEmailForm(DataFromFile.GetElementValue("email"));
-            Assert.IsTrue(signupPage.IsLoaded(), "SignUp page was not loaded");
-        }
-        catch (Exception e)
-        {
-            Assert.Fail(e.Message);
-        }
-    }
 
     [Test]
-    [TestCaseSource(typeof(DataFromFile), nameof(DataFromFile.RegisterFormData))]
+    [TestCaseSource(typeof(DataFromFile2), nameof(DataFromFile2.RegisterFormData))]
     public void TestSignUp(string firstName, string lastName, string email, string password,
         string address, string city, string state, string zipCode, string country, string mobile_phone, string alias)
     {
         try
         {
-            BrowserEnvironment.LoadApplication(URL);
-            var signupPage = Page.Login.SubmitEmailForm(DataFromFile.GetElementValue("email"));
+            var loginPage = Page.Login.LoadPage();
+            var signupPage = Page.Login.SubmitEmailForm(DataFromFile2.GetElementValue("email"));
             Assert.IsTrue(signupPage.IsPageLoaded(), "SignUp page was not loaded");
             var userHomePage = signupPage.FillRegistrationForm(firstName, lastName, email, password,
         address, city, state, zipCode, country, mobile_phone, alias);
@@ -56,7 +36,7 @@ public class AutomationPracticeTests : TestBaseClass
         {
             BrowserEnvironment.LoadApplication(URL);
             var logInPage = Page.Login;
-            var userHomePage = logInPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
+            var userHomePage = logInPage.FillLogInDetails(DataFromFile2.GetElementValue("email"), DataFromFile2.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
         }
         catch (Exception e)
@@ -72,7 +52,7 @@ public class AutomationPracticeTests : TestBaseClass
         {
             BrowserEnvironment.LoadApplication(URL);
             var logInPage = Page.Login;
-            var userHomePage = logInPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
+            var userHomePage = logInPage.FillLogInDetails(DataFromFile2.GetElementValue("email"), DataFromFile2.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
             var wishlists = userHomePage.ClickWishlist();
             Assert.IsTrue(wishlists.IsPageLoaded(), "wishlists page was not loaded");
@@ -90,7 +70,7 @@ public class AutomationPracticeTests : TestBaseClass
         {
             BrowserEnvironment.LoadApplication(URL);
             var logInPage = Page.Login;
-            var userHomePage = logInPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
+            var userHomePage = logInPage.FillLogInDetails(DataFromFile2.GetElementValue("email"), DataFromFile2.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
             var wishlists = userHomePage.ClickWishlist();
             Assert.IsTrue(wishlists.IsPageLoaded(), "Wishlists page was not loaded");
@@ -114,7 +94,7 @@ public class AutomationPracticeTests : TestBaseClass
         {
             BrowserEnvironment.LoadApplication(URL);
             var logInPage = Page.Login;
-            var userHomePage = logInPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
+            var userHomePage = logInPage.FillLogInDetails(DataFromFile2.GetElementValue("email"), DataFromFile2.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
             var wishlists = userHomePage.ClickWishlist();
             Assert.IsTrue(wishlists.IsPageLoaded(), "Wishlists page was not loaded");
@@ -139,7 +119,7 @@ public class AutomationPracticeTests : TestBaseClass
         {
             BrowserEnvironment.LoadApplication(URL);
             var logInPage = Page.Login;
-            var userHomePage = logInPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
+            var userHomePage = logInPage.FillLogInDetails(DataFromFile2.GetElementValue("email"), DataFromFile2.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
             var dressesPage = userHomePage.ClickDressesOption();
             Assert.IsTrue(dressesPage.IsPageLoaded(), "Dresses page was not loaded");
