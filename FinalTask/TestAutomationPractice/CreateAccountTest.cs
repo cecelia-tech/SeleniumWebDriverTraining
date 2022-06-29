@@ -10,7 +10,7 @@ internal class CreateAccountTest : TestBaseClass
         try
         {
             var loginPage = Page.Login.LoadPage();
-            var signupPage = loginPage.SubmitEmailForm("p@gh2.com");
+            var signupPage = loginPage.SubmitEmailForm(DataFromFile2.GetElementValue("email"));
             Assert.IsTrue(signupPage.IsPageLoaded(), "SignUp page was not loaded");
         }
         catch (Exception e)

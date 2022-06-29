@@ -72,7 +72,7 @@ public class LoginPage : BaseClass, ILoad<LoginPage>
         }
     }
 
-    internal UserHomePage FillLogInDetails(string email, string password)
+    public UserHomePage FillLogInDetails(string email, string password)
     {
         SetInputValue(logInEmailInput, email);
         SetInputValue(logInPasswordInput, password);

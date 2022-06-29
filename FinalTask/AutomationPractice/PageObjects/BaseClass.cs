@@ -6,7 +6,7 @@ using SeleniumExtras.WaitHelpers;
 
 namespace AutomationPractice;
 
-public class BaseClass
+public abstract class BaseClass 
 {
     [FindsBy(How = How.ClassName, Using = "account")]
     private IWebElement userHomePage;
@@ -50,4 +50,6 @@ public class BaseClass
     {
         ClickElement(logout);
     }
+
+    
 }

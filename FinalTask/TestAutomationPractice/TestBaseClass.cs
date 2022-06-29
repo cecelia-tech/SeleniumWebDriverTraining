@@ -25,8 +25,9 @@ public class TestBaseClass
         if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
         {
             var screenshot = ((ITakesScreenshot)BrowserEnvironment.Driver).GetScreenshot();
-            var filename = TestContext.CurrentContext.Test.MethodName + "_screenshot_" + DateTime.Now + ".png";
-            var path = Directory.GetCurrentDirectory() + "allure-results" + filename;
+            var folderName = "allure-results";
+            var filename = TestContext.CurrentContext.Test.MethodName + "_screenshot_" + DateTime.Now.Ticks + ".png";
+            var path = Path.Combine(Environment.CurrentDirectory, folderName, filename);
             screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
             TestContext.AddTestAttachment(path);
             AllureLifecycle.Instance.AddAttachment(filename, "image/png", path);
