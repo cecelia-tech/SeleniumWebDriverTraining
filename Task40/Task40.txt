@@ -1,0 +1,87 @@
+﻿Start page:
+
+a) Search input
+//input[@id="text"]
+input[id='text']
+
+b) Find button
+//button[./span[text()='Search']]
+button[type='submit']
+
+
+Email page:
+
+c) Write email button
+//a[contains(@href, 'compose')]
+a[href*= 'compose']
+
+d) Logout link
+//a[text()='Log out']
+a.b-header__link_exit
+
+e) Settings link
+//a[text()='Settings']
+a.b-header__link_setup
+
+f) 1 locator for all 5 elements: Inbox, Sent, Deleted, Spam and Draft links
+//div[@aria-label='Папки']/span
+div[aria-label='Папки']>span
+
+g) 1 locator for all 4 elements: Inbox, Deleted, Spam and Draft links
+//div[@aria-label='Папки']/* [not(position() = 2)]
+div[aria-label='Папки']>span:not(:nth-child(2)) 
+
+
+New email page:
+
+h) To input
+//input[@id='id1163503860925']
+input#id1163503860925
+
+i) Topic input
+//input[@id='id1163503860909']
+input#id1163503860909
+
+j) Find button
+//input[@name='search']
+input[name='search']
+
+k) Add multiple attachments button
+//button[@name='nosend']
+button[name='nosend']
+
+l) 1 locator for all 3 elements: Send, Save and Cancel inputs
+//div[@class='b-compose__more-attach']/following-sibling::input
+.b-compose__more-attach~input
+
+m) Update locator (just add any code after it, but initial part must be presented as beginning of locator) 
+“.b-compose__file” | ”//input[@class='b-compose__file']” to grab all 3 elements: Send, Save and Cancel inputs
+
+//input[@class='b-compose__file']/following-sibling::input
+.b-compose__file~input
+
+n) Update locator (just add any code after it, but initial part must be presented as beginning of locator) 
+“button[name='nosend']” | “//button[@name='nosend']” to grab all 3 elements: Send, Save and Cancel inputs
+
+//button[@name='nosend']/parent::div/following-sibling::input
+button[name='nosend'] => it is unavailable to select parent nodes in CSS, thus it doesn't seem possible to access it's siblings
+
+o) Xpath only. Update locator (just add any code after it, but initial part must be presented as beginning of locator) 
+“//input[contains(@class, 'b-compose__cancel')]” to grab all 2 elements: Send and Save inputs
+
+//input[contains(@class, 'b-compose__cancel')]/preceding-sibling::input[contains(@class, 'b-form-button')]
+
+p) Update locator (just add any code after it, but initial part must be presented as beginning of locator) 
+“.b-buttons>input” | “//div[@class='b-buttons']/input” to grab all 3 elements: Choose Files, Save and Cancel inputs
+
+//div[@class='b-buttons']/input [not(@name='doit')]
+.b-buttons>input:not(input[name='doit'])
+
+
+Sent page:
+
+q) Css only. Locator to get even links to topics starting from 4th email
+div[class*= 'message_thread']:nth-child(n+4) a[class*='message__link']
+
+r) Xpath only. Locator to get all links to topics starting from 2nd email
+//div[contains(@class, 'message_thread')][position()>=2]//a[contains(@class, 'message__link')]
