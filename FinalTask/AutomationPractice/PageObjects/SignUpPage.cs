@@ -70,7 +70,7 @@ public class SignUpPage : BaseClass, ILoad<SignUpPage>
         try
         {
             return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
-                .Until(ExpectedConditions.ElementIsVisible(By.Id("account-creation_form"))).Displayed;
+                .Until(ExpectedConditions.ElementIsVisible(signUpForm)).Displayed;
         }
         catch (TimeoutException)
         {

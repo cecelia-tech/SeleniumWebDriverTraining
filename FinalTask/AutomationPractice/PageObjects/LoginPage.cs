@@ -23,18 +23,6 @@ public class LoginPage : BaseClass, ILoad<LoginPage>
 
     private By errorMessage = By.Id("create_account_error");
 
-    internal bool IsLoaded()
-    {
-        try
-        {
-            return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10)).Until(ExpectedConditions.ElementIsVisible(By.Id("create-account_form"))).Displayed;
-        }
-        catch (TimeoutException)
-        {
-            return false;
-        }
-    }
-
     internal SignUpPage SubmitEmailForm(string email)
     {
         SetEmail(email);

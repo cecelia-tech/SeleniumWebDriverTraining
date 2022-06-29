@@ -4,49 +4,48 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using SeleniumExtras.WaitHelpers;
 
-namespace AutomationPractice
+namespace AutomationPractice;
+
+public class UserHomePage : BaseClass, ILoad<UserHomePage>
 {
-    public class UserHomePage : BaseClass, ILoad<UserHomePage>
+    private const string URL = "http://automationpractice.com/index.php?controller=my-account";
+
+    [FindsBy(How = How.CssSelector, Using = "a[title='My wishlists']")]
+    private IWebElement wishList;
+    [FindsBy(How = How.CssSelector, Using = "#block_top_menu > ul > li:nth-child(2) a[title='Dresses']")]
+    private IWebElement dresses;
+
+    internal WishListsPage ClickWishlist()
     {
-        private const string URL = "http://automationpractice.com/index.php?controller=my-account";
+        ClickElement(wishList);
 
-        [FindsBy(How = How.CssSelector, Using = "a[title='My wishlists']")]
-        private IWebElement wishList;
-        [FindsBy(How = How.CssSelector, Using = "#block_top_menu > ul > li:nth-child(2) a[title='Dresses']")]
-        private IWebElement dresses;
+        return Page.WishLists;
+    }
 
-        internal WishListsPage ClickWishlist()
+    public DressesPage ClickDressesOption()
+    {
+        ClickElement(dresses);
+
+        return Page.DressesPage;
+    }
+
+    public bool IsPageLoaded()
+    {
+        try
         {
-            ClickElement(wishList);
-
-            return Page.WishLists;
+            return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
+                .Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".header_user_info:first-of-type"))).Displayed;
         }
-
-        public DressesPage ClickDressesOption()
+        catch (WebDriverTimeoutException)
         {
-            ClickElement(dresses);
-
-            return Page.DressesPage;
+            return false;
         }
+    }
 
-        public bool IsPageLoaded()
-        {
-            try
-            {
-                return new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
-                    .Until(ExpectedConditions.ElementIsVisible(By.CssSelector(".header_user_info:first-of-type"))).Displayed;
-            }
-            catch (WebDriverTimeoutException)
-            {
-                return false;
-            }
-        }
+    public UserHomePage LoadPage()
+    {
+        BrowserEnvironment.LoadApplication(URL);
 
-        public UserHomePage LoadPage()
-        {
-            BrowserEnvironment.LoadApplication(URL);
-
-            return Page.UserHome;
-        }
+        return Page.UserHome;
     }
 }

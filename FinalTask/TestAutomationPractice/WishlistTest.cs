@@ -10,7 +10,7 @@ public class WishlistTest : TestBaseClass
         try
         {
             var logInPage = Page.Login.LoadPage();
-            var userHomePage = logInPage.FillLogInDetails(DataFromFile2.GetElementValue("email"), DataFromFile2.GetElementValue("password"));
+            var userHomePage = logInPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
         }
         catch (Exception e)

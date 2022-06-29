@@ -5,7 +5,7 @@ using System.Xml.Linq;
 namespace TestAutomationPractice;
 
 [TestFixture]
-internal class DataFromFile2
+internal class DataFromFile
 {
     internal static IEnumerable<TestCaseData> RegisterFormData
     {

@@ -10,7 +10,7 @@ internal class CreateAccountTest : TestBaseClass
         try
         {
             var loginPage = Page.Login.LoadPage();
-            var signupPage = loginPage.SubmitEmailForm(DataFromFile2.GetElementValue("email"));
+            var signupPage = loginPage.SubmitEmailForm(DataFromFile.GetElementValue("email"));
             Assert.IsTrue(signupPage.IsPageLoaded(), "SignUp page was not loaded");
         }
         catch (Exception e)
@@ -19,7 +19,7 @@ internal class CreateAccountTest : TestBaseClass
         }
     }
 
-    [Test, TestCaseSource(typeof(DataFromFile2), nameof(DataFromFile2.RegisterFormData))]
+    [Test, TestCaseSource(typeof(DataFromFile), nameof(DataFromFile.RegisterFormData))]
     public void TestSignUp(string firstName, string lastName, string email, string password,
         string address, string city, string state, string zipCode, string country, string mobile_phone, string alias)
     {

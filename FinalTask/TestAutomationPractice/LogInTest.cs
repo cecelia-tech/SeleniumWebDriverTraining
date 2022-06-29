@@ -10,7 +10,7 @@ public class LogInTest : TestBaseClass
         try
         {
             var loginPage = Page.Login.LoadPage();
-            var userHomePage = loginPage.FillLogInDetails(DataFromFile2.GetElementValue("email"), DataFromFile2.GetElementValue("password"));
+            var userHomePage = loginPage.FillLogInDetails(DataFromFile.GetElementValue("email"), DataFromFile.GetElementValue("password"));
             Assert.IsTrue(userHomePage.IsPageLoaded(), "User homepage was not loaded");
         }
         catch (Exception e)
