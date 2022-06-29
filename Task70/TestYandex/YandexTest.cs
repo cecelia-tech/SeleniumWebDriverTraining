@@ -1,17 +1,8 @@
 namespace TestYandex;
 
 [AllureNUnit]
-public class Tests
+public class Tests : TestBaseClass
 {
-    IWebDriver _driver;
-
-    [SetUp]
-    public void Setup()
-    {
-        _driver = new ChromeDriver();
-        _driver.Manage().Window.Maximize();
-    }
-
     [Test]
     [AllureTag("Allure", "Debug")]
     [AllureSeverity(SeverityLevel.critical)]
@@ -25,12 +16,9 @@ public class Tests
         Assert.IsTrue(loginPage.IsLoaded(), "Login page is not loaded");
         var homePageAfterLogin = loginPage.LogIn("SeleniumTest789@yandex.com", "belekoks_789!");
         Assert.IsTrue(homePageAfterLogin.IsLoaded(), "Home page after login not loaded");
-        Assert.IsTrue(homePageAfterLogin.IsLoggedIn(), "Username link is not loaded");
-    }
 
-    [TearDown]
-    public void CleanUp()
-    {
-        _driver.Quit();
+        TakeScreenShotAsFile("example1");
+
+        Assert.IsTrue(homePageAfterLogin.IsLoggedIn(), "Username link is not loaded");
     }
 }
