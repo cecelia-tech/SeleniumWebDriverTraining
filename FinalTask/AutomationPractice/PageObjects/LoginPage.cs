@@ -9,7 +9,6 @@ namespace AutomationPractice;
 public class LoginPage : BaseClass, ILoad<LoginPage>
 {
     private const string URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account";
-
     [FindsBy(How = How.Id, Using = "email_create")]
     private IWebElement createAccountEmailInput;
     [FindsBy(How = How.Id, Using = "SubmitCreate")]
@@ -20,7 +19,6 @@ public class LoginPage : BaseClass, ILoad<LoginPage>
     private IWebElement logInPasswordInput;
     [FindsBy(How = How.Id, Using = "SubmitLogin")]
     private IWebElement logInButton;
-
     private By errorMessage = By.Id("create_account_error");
 
     internal SignUpPage SubmitEmailForm(string email)
@@ -38,13 +36,13 @@ public class LoginPage : BaseClass, ILoad<LoginPage>
 
     private void SetEmail(string email)
     {
-        createAccountEmailInput.Clear();
-        createAccountEmailInput.SendKeys(email);
+        createAccountEmailInput?.Clear();
+        createAccountEmailInput?.SendKeys(email);
     }
 
     private void ClickCreateAccountButton()
     {
-        crteateAccountButton.Click();
+        crteateAccountButton?.Click();
     }
 
     private bool IsEmailIncorrect()
@@ -72,7 +70,6 @@ public class LoginPage : BaseClass, ILoad<LoginPage>
     public LoginPage LoadPage()
     {
         BrowserEnvironment.LoadApplication(URL);
-
         return Page.Login;
     }
 

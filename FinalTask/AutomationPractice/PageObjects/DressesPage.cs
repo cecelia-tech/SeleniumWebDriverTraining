@@ -8,7 +8,6 @@ namespace AutomationPractice.PageObjects;
 public class DressesPage : BaseClass, ILoad<DressesPage>
 {
     private const string URL = "http://automationpractice.com/index.php?id_category=8&controller=category";
-
     [FindsBy(How = How.CssSelector, Using = ".product_list > li:nth-of-type(1) > div")]
     private IWebElement firstDress;
     [FindsBy(How = How.CssSelector, Using = ".product_list > li:nth-of-type(1) a[title='Add to cart']")]
@@ -25,7 +24,6 @@ public class DressesPage : BaseClass, ILoad<DressesPage>
     private IWebElement continueShoppingButton;
     [FindsBy(How = How.CssSelector, Using = "a[title='View my shopping cart']")]
     private IWebElement cartButton;
-
 
     public DressesPage AddThreeDressesToTheCart()
     {
@@ -64,7 +62,6 @@ public class DressesPage : BaseClass, ILoad<DressesPage>
     public DressesPage LoadPage()
     {
         BrowserEnvironment.LoadApplication(URL);
-
         return Page.DressesPage;
     }
 }

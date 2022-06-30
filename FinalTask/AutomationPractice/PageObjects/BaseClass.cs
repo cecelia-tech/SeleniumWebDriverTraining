@@ -22,15 +22,12 @@ public abstract class BaseClass
     protected void ClickElement(IWebElement element)
     {
         new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
-            .Until(ExpectedConditions.ElementToBeClickable(element));
-
-        element.Click();
+            .Until(ExpectedConditions.ElementToBeClickable(element)).Click();
     }
 
     protected void MoveMouse(IWebElement element)
     {
         Actions action = new Actions(BrowserEnvironment.Driver);
-
         action.MoveToElement(element).Perform();
     }
 
@@ -46,10 +43,5 @@ public abstract class BaseClass
         return Page.UserHomePage;
     }
 
-    public void Logout()
-    {
-        ClickElement(logout);
-    }
-
-    
+    public void Logout() => ClickElement(logout);
 }

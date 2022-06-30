@@ -9,7 +9,6 @@ namespace AutomationPractice;
 public class UserHomePage : BaseClass, ILoad<UserHomePage>
 {
     private const string URL = "http://automationpractice.com/index.php?controller=my-account";
-
     [FindsBy(How = How.CssSelector, Using = "a[title='My wishlists']")]
     private IWebElement wishList;
     [FindsBy(How = How.CssSelector, Using = "#block_top_menu > ul > li:nth-child(2) a[title='Dresses']")]
@@ -18,14 +17,12 @@ public class UserHomePage : BaseClass, ILoad<UserHomePage>
     internal WishListsPage ClickWishlist()
     {
         ClickElement(wishList);
-
         return Page.WishLists;
     }
 
     public DressesPage ClickDressesOption()
     {
         ClickElement(dresses);
-
         return Page.DressesPage;
     }
 
@@ -45,7 +42,6 @@ public class UserHomePage : BaseClass, ILoad<UserHomePage>
     public UserHomePage LoadPage()
     {
         BrowserEnvironment.LoadApplication(URL);
-
         return Page.UserHome;
     }
 }

@@ -10,18 +10,15 @@ public class CartPage : BaseClass, ILoad<CartPage>
     private const string URL = "http://automationpractice.com/index.php?controller=order";
     [FindsBy(How = How.Id, Using = "total_price")]
     private IWebElement totalPrice;
-
     private By productsInTheCart = By.XPath("//tr[contains(@id, 'product')]");
     private By cartHeadline = By.Id("cart_title");
 
-    public int CountProductsInTheCart()
-    {
-        return BrowserEnvironment.Driver.FindElements(productsInTheCart).Count();
-    }
+    public int CountProductsInTheCart() => BrowserEnvironment.Driver.FindElements(productsInTheCart).Count();
 
     public double GetCartTotal()
     {
-        return double.Parse(totalPrice.Text.TrimStart('$'));
+        double.TryParse(totalPrice.Text.TrimStart('$'), out double total);
+        return total;
     }
 
     public bool IsPageLoaded()
@@ -40,7 +37,6 @@ public class CartPage : BaseClass, ILoad<CartPage>
     public CartPage LoadPage()
     {
         BrowserEnvironment.LoadApplication(URL);
-
         return Page.CartPage;
     }
 }

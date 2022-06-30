@@ -10,7 +10,6 @@ public class SignUpPage : BaseClass, ILoad<SignUpPage>
 {
     private const string URL = "http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation";
     private By signUpForm = By.Id("account-creation_form");
-    
     [FindsBy(How = How.Id, Using = "customer_firstname")]
     private IWebElement personalInfoFirstNameInputLocator;
     [FindsBy(How = How.Id, Using = "customer_lastname")]
@@ -61,7 +60,6 @@ public class SignUpPage : BaseClass, ILoad<SignUpPage>
     public SignUpPage LoadPage()
     {
         BrowserEnvironment.LoadApplication(URL);
-
         return Page.SignUp;
     }
 

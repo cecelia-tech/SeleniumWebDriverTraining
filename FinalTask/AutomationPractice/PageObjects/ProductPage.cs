@@ -27,7 +27,6 @@ public class ProductPage : BaseClass, ILoad<ProductPage>
     public ProductPage LoadPage()
     {
         BrowserEnvironment.LoadApplication(URL);
-
         return Page.ProductPage;
     }
 
@@ -38,6 +37,6 @@ public class ProductPage : BaseClass, ILoad<ProductPage>
         new WebDriverWait(BrowserEnvironment.Driver, TimeSpan.FromSeconds(10))
             .Until(ExpectedConditions.ElementIsVisible(By.CssSelector("a[title='Close']"))).Click();
 
-        return this;
+        return Page.ProductPage;
     }
 }
