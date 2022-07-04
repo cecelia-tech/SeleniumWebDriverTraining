@@ -11,7 +11,7 @@ internal class HomePage : BaseClass
     IWebElement TermsConditionsButton;
     [FindsBy(How = How.XPath, Using = "//input[@name = 'q']")]
     IWebElement SearchInput;
-    [FindsBy(How = How.CssSelector, Using = ".FPdoLc > center > input")]
+    [FindsBy(How = How.XPath, Using = "//div[@class='CqAVzb lJ9FBc']/center/input[1]")]
     IWebElement SearchButton;
 
     public HomePage(IWebDriver driver) : base(driver)
